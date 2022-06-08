@@ -1,0 +1,219 @@
+/*----------  base
+------------------------------------------------------------------------------*/
+@import "base/reset";
+@import "base/variables";
+@import "base/typography"; 
+
+/*----------  layout
+------------------------------------------------------------------------------*/
+@import "layout/header";    
+@import "layout/footer";    
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    box-sizing: border-box;
+    background-color: green;
+    min-height: 100vh;
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: flex-start;
+    // align-items: center;
+    padding: 64px 0px 0 0px;
+}
+
+main {
+    width: 100%;
+    // max-width: 540px;
+}
+
+.phone {
+    margin: 0 auto;
+    width: 247px;
+    background-color: white;
+    border-radius: 28px;
+    padding: 10px;
+    position: relative;
+    &:after {
+        content: '';
+        position: absolute;
+        background-color: white;
+        width: 130px;
+        height: 29px;
+        border-radius: 16px;
+        top: 0px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 10;
+    }
+}
+.phone__inner-frame {
+    border-radius: 24px;
+    background-color: darkcyan;
+    overflow: hidden;
+    padding-bottom: 11px;
+}
+a {
+    display: block;
+}
+.chat-header {
+    border-radius: 5px;
+    background-color: aquamarine;
+    // box-shadow: ;
+    position: relative;    
+    padding: 10px;
+    padding-top: 30px;
+    padding-bottom: 11px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    .btn-settings {
+        margin-left: auto;
+    }
+    
+}
+i {
+    font-size: 16px;
+    font-weight: 700;
+}
+.contact {
+    padding-left: 8px;
+}
+.contact-name {
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: -0.8px;
+    font-weight: 700;
+}
+.contact-status {
+    font-size: 8px;
+    line-height: 12px;
+}
+.img-wrapper {
+    width: 24px;
+    height: 24px;
+    overflow: hidden;
+    margin-left: 1px;
+    padding: 1px;
+    background-color: white;
+    border-radius: 50%;
+    img {
+        width: 100%;
+        border-radius: 50%;
+    }
+}
+
+// CHAT
+
+.chat-left,
+.chat-right {
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+.chat-left:first-of-type {
+    margin-top: 11px;
+}
+
+.chat-bubble {
+    border-radius: 10px;
+    background-color: aqua;   
+    padding: 8px;
+    margin: 0px 7px 8px 7px;
+    width: 128px;
+    font-size: 8px;
+    line-height: 9px;
+}
+.chat-left .chat-bubble {
+    border-bottom-left-radius: 3px;    
+}
+
+.test {
+    padding-top: 6px;
+    line-height: 9.9px;
+}
+
+.chat-right .chat-bubble {   
+    margin-left: auto;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 3px;
+    text-align: right;
+    &:first-of-type {
+        text-align: justify;
+    }
+}
+
+.chat-files {
+    padding: 0px 8px 5px 0;
+    text-align: right;
+}
+.chat-files img {
+    width: 40px;
+    display: inline-block;
+    border-radius: 9px;
+    &:nth-of-type(2) {
+        margin: 0 3px;
+    }
+}
+input[type="radio"] {
+    margin: 0;
+    width: 13px;
+    height: 13px;
+    display: block;
+    border-color: pink;
+    background-color: green;
+}
+.chat-bubble__price {
+    width: 160px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-right: 15px;
+    height: 32px;
+    // padding-top: 3px;
+    // padding-bottom: 3px;
+}
+label {
+    font-size: 8px;
+    line-height: 10px;
+    padding-left: 7px;
+}
+.chat-bubble__price span {
+    margin-left: auto;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: -0.8px;
+}
+.message-input-field {
+    margin: 8px;
+    margin-bottom: unset;
+    position: relative;
+    // width: 100%;
+}
+input[type="text"] {
+    border-radius: 30px;
+    padding: 10px;    
+    background-color: aquamarine;
+    // padding-right: 30px;
+    border: unset;
+    width: 100%;
+}
+.btn-send {
+    position: absolute;
+    right: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: blue;
+    width: 24px;
+    height: 24px;
+    border: unset;
+    border-radius: 50%;
+}
+
+@media screen and (min-width: 376px) {    
+   
+}

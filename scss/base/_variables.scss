@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap');
+// ----- Font family-----
+$ffamily_primary: 'Rubik', sans-serif;;
+
+// ----- Font size-----
+$fsize_primary: 16px;
+
+// ----- Gradients -----
+$magenta: hsl(293, 100%, 63%);
+$violet: hsl(264, 100%, 61%);
+
+// ----- Text color-----
+
+// sub-heading at the top of the app UI
+$text_pale: hsl(276, 100%, 81%); 
+// chat on the left
+$text_moderate:hsl(276, 55%, 52%);
+// chat on the right
+$text_dark:hsl(271, 15%, 43%);
+// placeholder text
+$text_grayish:hsl(206, 6%, 79%);
+// main heading
+$text_very_dark:hsl(271, 36%, 24%);
+// paragraph
+$text_dark_grayish:hsl(270, 7%, 64%);
+
+// ----- Secondary -----
+
+$white: hsl(0, 0%, 100%);
+// app background
+$light: hsl(270, 20%, 96%);
+// submit button background
+$bg_dark: hsl(271, 36%, 24%);
+// radio button outline
+$bg_light: hsl(289, 100%, 72%);
