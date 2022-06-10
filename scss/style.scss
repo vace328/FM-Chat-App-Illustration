@@ -4,6 +4,9 @@
 @import "base/variables";
 @import "base/typography"; 
 
+/*----------  helpers
+------------------------------------------------------------------------------*/
+@import "helpers/mixins";
 /*----------  layout
 ------------------------------------------------------------------------------*/
 @import "layout/header";    
@@ -45,7 +48,8 @@ main {
         background: rgb(136,56,240);
         background: linear-gradient(0deg, rgba(136,56,240,1) 0%, rgba(233,66,255,1) 100%);
         border-radius: 256px;
-        top: -505px;
+        // top: -505px;
+        animation: slide-in-sm-left 1s forwards;
         left: -360px;
         z-index: -1;
     }
@@ -60,7 +64,8 @@ main {
         height: 951px;
         background-color: darken($light, 2%);
         border-radius: 256px;
-        top: -200px;
+        // top: -200px;
+        animation: slide-in-sm-right 1s forwards;
         right: -366px;
         z-index: -1;
     }
@@ -71,12 +76,14 @@ main {
         letter-spacing: -0.8px;
         margin-bottom: 18px;
         color: $text_very_dark;
+        animation: animate-text-lg 2s forwards;
     }
     
     p {
         line-height: 1.8;
         text-align: center;
         color: $text_dark_grayish;
+        animation: animate-text-lg 2s forwards;
     }
 }
 
@@ -88,6 +95,7 @@ main {
     border-radius: 28px;
     padding: 10px;
     position: relative;
+    animation: animate-phone-sm 2s forwards;
 //     -webkit-box-shadow: 9px 15px 55px -6px rgba(186,186,186,1);
 // -moz-box-shadow: 9px 15px 55px -6px rgba(186,186,186,1);
 // box-shadow: 9px 15px 55px -6px rgba(186,186,186,1);
@@ -311,27 +319,93 @@ input[type="text"] {
     letter-spacing: 0.4px;
   }
 
-  /* Hide the browser's default radio button */
+/* Hide the browser's default radio button */
 input[type="radio"] {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    // height: 0;
-    // width: 0;
-  }
+position: absolute;
+opacity: 0;
+cursor: pointer;
+// height: 0;
+// width: 0;
+}
 
   
-  /* Create a custom radio button */
-  .custom-radio {
-    position: absolute;
-    top: 50%;
-    left: 8px;
-    height: 13px;
-    width: 13px;
-    transform: translateY(-50%);
-    border-radius: 50%;
-    border: 1px solid $bg_light;
-  }
+/* Create a custom radio button */
+.custom-radio {
+position: absolute;
+top: 50%;
+left: 8px;
+height: 13px;
+width: 13px;
+transform: translateY(-50%);
+border-radius: 50%;
+border: 1px solid $bg_light;
+}
+
+
+@keyframes slide-in-lg-left {
+    from {
+        top: -1200px;
+    }
+    to {
+        top: -400px;
+    }
+} 
+@keyframes slide-in-lg-right {
+    from {
+        top: 600px;
+    }
+    to {
+        top: -125px;
+    }
+} 
+@keyframes slide-in-sm-left {
+    from {
+        top: -1100px;
+    }
+    to {
+        top: -505px;
+    }
+} 
+@keyframes slide-in-sm-right {
+    from {
+        top: 300px;
+    }
+    to {
+        top: -200px;
+    }
+} 
+
+
+
+
+
+@keyframes animate-phone-lg {
+    from {
+        margin: 0 0px 0 auto;
+    }
+    to {
+        margin: 0 95px 0 auto;
+    }
+} 
+@keyframes animate-text-lg {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+} 
+@keyframes animate-phone-sm {
+    0% {
+        transform: scale(1,1);
+    }
+    50% {
+        transform: scale(1.1,1.1);
+    }
+    100% {
+        transform: scale(1,1);
+    }
+} 
 
 @media screen and (min-width: 800px) {    
    .text-wrapper p {
@@ -348,22 +422,26 @@ input[type="radio"] {
     .phone-wrapper {
         width: auto;
         margin:unset;
-        &:before {            
-            top: -400px;
-            left: -90px;            
+        &:before {     
+            animation: slide-in-lg-left 1s forwards;       
+            // top: -400px;
+            left: -92px;            
         }
     }
     .text-wrapper {        
         padding-top: 60px;
         padding-left: 30px;
+         
         &:before {
             // background-color: yellow;
-            top: -125px;
+            // top: 600px;
+            animation: slide-in-lg-right 1s forwards;            
             right: -190px;
         }
     }
     .phone {
-        margin: 0 95px 0 auto;
+        // margin: 0 95px 0 auto;
+        animation: animate-phone-lg 1s forwards;   
     }
     main {
         padding: 0;
@@ -375,9 +453,12 @@ input[type="radio"] {
        width: 450px;
        text-align: left;
        margin: 0;
+       animation: animate-text-lg 3s forwards;
+       
    }
    .text-wrapper h2 {
     text-align: left;
+    animation: animate-text-lg 3s forwards;
    }
    
    
