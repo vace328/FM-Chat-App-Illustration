@@ -15,20 +15,23 @@
 
 body {
     box-sizing: border-box;
-    background-color: green;
+    background-color: $light;
     min-height: 100vh;
-    overflow: hidden;
+    overflow-x: hidden;
     // display: flex;
     // flex-direction: column;
     // justify-content: flex-start;
     // align-items: center;
-    padding: 64px 36px 0 36px;
+    
 }
 
 
 main {
     width: 100%;
+    overflow: hidden;
     // max-width: 540px;
+    padding: 64px 36px 0 36px;
+    min-height: 100vh;
 }
 .phone-wrapper {
     width: 100%;
@@ -38,8 +41,9 @@ main {
         position: absolute;
         content: '';
         width: 512px;
-        height: 951px;
-        background-color: antiquewhite;
+        height: 951px;  
+        background: rgb(136,56,240);
+        background: linear-gradient(0deg, rgba(136,56,240,1) 0%, rgba(233,66,255,1) 100%);
         border-radius: 256px;
         top: -505px;
         left: -360px;
@@ -54,7 +58,7 @@ main {
         content: '';
         width: 512px;
         height: 951px;
-        background-color: antiquewhite;
+        background-color: darken($light, 2%);
         border-radius: 256px;
         top: -200px;
         right: -366px;
@@ -66,11 +70,13 @@ main {
         text-align: center;
         letter-spacing: -0.8px;
         margin-bottom: 18px;
+        color: $text_very_dark;
     }
     
     p {
         line-height: 1.8;
         text-align: center;
+        color: $text_dark_grayish;
     }
 }
 
@@ -82,6 +88,13 @@ main {
     border-radius: 28px;
     padding: 10px;
     position: relative;
+//     -webkit-box-shadow: 9px 15px 55px -6px rgba(186,186,186,1);
+// -moz-box-shadow: 9px 15px 55px -6px rgba(186,186,186,1);
+// box-shadow: 9px 15px 55px -6px rgba(186,186,186,1);
+
+-webkit-box-shadow: 9px 15px 55px -6px rgba(140,140,140,1);
+-moz-box-shadow: 9px 15px 55px -6px rgba(140,140,140,1);
+box-shadow: 9px 15px 55px -6px rgba(140,140,140,1);
     &:after {
         content: '';
         position: absolute;
@@ -96,8 +109,8 @@ main {
     }
 }
 .phone__inner-frame {
-    border-radius: 24px;
-    background-color: darkcyan;
+    border-radius: 20px;
+    background-color: $light;
     overflow: hidden;
     padding-bottom: 11px;
 }
@@ -106,7 +119,8 @@ a {
 }
 .chat-header {
     border-radius: 5px;
-    background-color: aquamarine;
+    background: rgb(136,56,240);
+background: linear-gradient(56deg, rgba(136,56,240,1) 0%, rgba(233,66,255,1) 100%);
     // box-shadow: ;
     position: relative;    
     padding: 10px;
@@ -125,19 +139,23 @@ a {
 i {
     font-size: 16px;
     font-weight: 700;
+    color: $text-pale;
 }
 .contact {
     padding-left: 8px;
+    
 }
 .contact-name {
     font-size: 12px;
     line-height: 14px;
-    letter-spacing: -0.8px;
-    font-weight: 700;
+    letter-spacing: -0.5px;
+    font-weight: 500;
+    color:$white;
 }
 .contact-status {
     font-size: 8px;
     line-height: 12px;
+    color: $text-pale;
 }
 .img-wrapper {
     width: 24px;
@@ -167,7 +185,7 @@ i {
 
 .chat-bubble {
     border-radius: 10px;
-    background-color: aqua;   
+    // background-color: aqua;   
     padding: 8px;
     margin: 0px 7px 8px 7px;
     width: 128px;
@@ -176,7 +194,11 @@ i {
 }
 .chat-left .chat-bubble {
     border-bottom-left-radius: 3px;    
+    color: $text_moderate;
+    // background-color: lighten($violet, 35%);
+    background-color: #EDE5F4;
 }
+
 
 .test {
     padding-top: 6px;
@@ -188,8 +210,14 @@ i {
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 3px;
     text-align: right;
+    background-color: $white;
+    color: $text-dark;
+   
     &:first-of-type {
         text-align: justify;
+    }
+    &:last-of-type {
+        width: 82px;
     }
 }
 
@@ -205,34 +233,32 @@ i {
         margin: 0 3px;
     }
 }
-input[type="radio"] {
-    margin: 0;
-    width: 13px;
-    height: 13px;
-    display: block;
-    border-color: pink;
-    background-color: green;
-}
+
 .chat-bubble__price {
+    position: relative;
     width: 160px;
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding-right: 15px;
+    padding-right: 18px;
     height: 32px;
+    background: rgb(233,66,255);
+    background: linear-gradient(90deg, rgba(233,66,255,1) 0%, rgba(136,56,240,1) 100%);
     // padding-top: 3px;
     // padding-bottom: 3px;
 }
 label {
     font-size: 8px;
     line-height: 10px;
-    padding-left: 7px;
+    padding-left: 20px;
+    color: $white;
 }
 .chat-bubble__price span {
     margin-left: auto;
-    font-size: 15px;
-    font-weight: 700;
-    letter-spacing: -0.8px;
+    font-size: 12px;
+    font-weight: 000;
+    // letter-spacing: -0.1px;
+    color: $white;
 }
 .message-input-field {
     margin: 8px;
@@ -242,8 +268,10 @@ label {
 }
 input[type="text"] {
     border-radius: 30px;
-    padding: 10px;    
-    background-color: aquamarine;
+    padding: 10px; 
+    padding-left: 20px;   
+    padding-top: 8px;   
+    background-color: $white;
     // padding-right: 30px;
     border: unset;
     width: 100%;
@@ -253,13 +281,107 @@ input[type="text"] {
     right: 4px;
     top: 50%;
     transform: translateY(-50%);
-    background-color: blue;
+    background-color: $bg_dark;
     width: 24px;
     height: 24px;
     border: unset;
     border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .bi-chevron-right{
+        font-size: 12px;
+    }
 }
+::placeholder {
+    color: $text_grayish;   
+    font-size: 8px;
+    letter-spacing: 0.4px;
+  }
+  
+  :-ms-input-placeholder { 
+    color: $text_grayish;
+    font-size: 8px;
+    letter-spacing: 0.4px;
+  }
+  
+  ::-ms-input-placeholder { 
+    color: $text_grayish;
+    font-size: 8px;
+    letter-spacing: 0.4px;
+  }
 
+  /* Hide the browser's default radio button */
+input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    // height: 0;
+    // width: 0;
+  }
+
+  
+  /* Create a custom radio button */
+  .custom-radio {
+    position: absolute;
+    top: 50%;
+    left: 8px;
+    height: 13px;
+    width: 13px;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    border: 1px solid $bg_light;
+  }
+
+@media screen and (min-width: 800px) {    
+   .text-wrapper p {
+       width: 500px;
+       margin: 0 auto;
+       
+   }
+}
+@media screen and (min-width: 1100px) {  
+    .phone-wrapper,
+    .text-wrapper {
+        flex: 1 1 0px;
+    }  
+    .phone-wrapper {
+        width: auto;
+        margin:unset;
+        &:before {            
+            top: -400px;
+            left: -90px;            
+        }
+    }
+    .text-wrapper {        
+        padding-top: 60px;
+        padding-left: 30px;
+        &:before {
+            // background-color: yellow;
+            top: -125px;
+            right: -190px;
+        }
+    }
+    .phone {
+        margin: 0 95px 0 auto;
+    }
+    main {
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+   .text-wrapper p {
+       width: 450px;
+       text-align: left;
+       margin: 0;
+   }
+   .text-wrapper h2 {
+    text-align: left;
+   }
+   
+   
+}
 @media screen and (min-width: 376px) {    
    
 }
