@@ -41,6 +41,8 @@ main {
     margin-bottom: 55px;
     position: relative;
     &:before {
+        --start: -1100px;
+        --end: -505px;
         position: absolute;
         content: '';
         width: 512px;
@@ -49,7 +51,7 @@ main {
         background: linear-gradient(0deg, rgba(136,56,240,1) 0%, rgba(233,66,255,1) 100%);
         border-radius: 256px;
         // top: -505px;
-        animation: slide-in-sm-left 1s forwards;
+        animation: slide-in 1s forwards;
         left: -360px;
         z-index: -1;
     }
@@ -58,6 +60,8 @@ main {
     padding-bottom: 60px;
     position: relative;
     &:before {
+        --start: 300px;
+        --end: -200px;
         position: absolute;
         content: '';
         width: 512px;
@@ -65,7 +69,7 @@ main {
         background-color: darken($light, 2%);
         border-radius: 256px;
         // top: -200px;
-        animation: slide-in-sm-right 1s forwards;
+        animation: slide-in 1s forwards;
         right: -366px;
         z-index: -1;
     }
@@ -76,33 +80,32 @@ main {
         letter-spacing: -0.8px;
         margin-bottom: 18px;
         color: $text_very_dark;
-        animation: animate-text-lg 2s forwards;
+        animation: fade-in 2s forwards;
     }
     
     p {
         line-height: 1.8;
         text-align: center;
         color: $text_dark_grayish;
-        animation: animate-text-lg 2s forwards;
+        animation: fade-in 2s forwards;
     }
 }
 
 
 .phone {
+    --start: 1;
+    --end: 1.1;
     margin: 0 auto;
     width: 247px;
     background-color: white;
     border-radius: 28px;
     padding: 10px;
     position: relative;
-    animation: animate-phone-sm 2s forwards;
-//     -webkit-box-shadow: 9px 15px 55px -6px rgba(186,186,186,1);
-// -moz-box-shadow: 9px 15px 55px -6px rgba(186,186,186,1);
-// box-shadow: 9px 15px 55px -6px rgba(186,186,186,1);
+    animation: scale-in-and-out 2s forwards;
+    -webkit-box-shadow: 9px 15px 55px -6px rgba(186,186,186,1);
+    -moz-box-shadow: 9px 15px 55px -6px rgba(186,186,186,1);
+    box-shadow: 9px 15px 55px -6px rgba(186,186,186,1);
 
--webkit-box-shadow: 9px 15px 55px -6px rgba(140,140,140,1);
--moz-box-shadow: 9px 15px 55px -6px rgba(140,140,140,1);
-box-shadow: 9px 15px 55px -6px rgba(140,140,140,1);
     &:after {
         content: '';
         position: absolute;
@@ -128,7 +131,7 @@ a {
 .chat-header {
     border-radius: 5px;
     background: rgb(136,56,240);
-background: linear-gradient(56deg, rgba(136,56,240,1) 0%, rgba(233,66,255,1) 100%);
+    background: linear-gradient(56deg, rgba(136,56,240,1) 0%, rgba(233,66,255,1) 100%);
     // box-shadow: ;
     position: relative;    
     padding: 10px;
@@ -341,53 +344,27 @@ border-radius: 50%;
 border: 1px solid $bg_light;
 }
 
-
-@keyframes slide-in-lg-left {
+@keyframes slide-in {
     from {
-        top: -1200px;
+        top: var(--start);
     }
     to {
-        top: -400px;
+        top: var(--end);
     }
-} 
-@keyframes slide-in-lg-right {
-    from {
-        top: 600px;
+}
+@keyframes scale-in-and-out {
+    0% {
+        transform: scale(var(--start), var(--start));
     }
-    to {
-        top: -125px;
+    50% {
+        transform: scale(var(--end), var(--end));
     }
-} 
-@keyframes slide-in-sm-left {
-    from {
-        top: -1100px;
+    100% {
+        transform: scale(var(--start),var(--start));
     }
-    to {
-        top: -505px;
-    }
-} 
-@keyframes slide-in-sm-right {
-    from {
-        top: 300px;
-    }
-    to {
-        top: -200px;
-    }
-} 
+}
 
-
-
-
-
-@keyframes animate-phone-lg {
-    from {
-        margin: 0 0px 0 auto;
-    }
-    to {
-        margin: 0 95px 0 auto;
-    }
-} 
-@keyframes animate-text-lg {
+@keyframes fade-in {
     from {
         opacity: 0;
     }
@@ -395,17 +372,7 @@ border: 1px solid $bg_light;
         opacity: 1;
     }
 } 
-@keyframes animate-phone-sm {
-    0% {
-        transform: scale(1,1);
-    }
-    50% {
-        transform: scale(1.1,1.1);
-    }
-    100% {
-        transform: scale(1,1);
-    }
-} 
+
 
 @media screen and (min-width: 800px) {    
    .text-wrapper p {
@@ -422,8 +389,10 @@ border: 1px solid $bg_light;
     .phone-wrapper {
         width: auto;
         margin:unset;
-        &:before {     
-            animation: slide-in-lg-left 1s forwards;       
+        &:before {   
+            --start: -1200px;
+            --end: -400px;  
+            animation: slide-in 1s forwards;       
             // top: -400px;
             left: -92px;            
         }
@@ -433,15 +402,19 @@ border: 1px solid $bg_light;
         padding-left: 30px;
          
         &:before {
+            --start: 600px;
+            --end: -125px;
             // background-color: yellow;
             // top: 600px;
-            animation: slide-in-lg-right 1s forwards;            
+            animation: slide-in 1s forwards;            
             right: -190px;
         }
     }
     .phone {
-        // margin: 0 95px 0 auto;
-        animation: animate-phone-lg 1s forwards;   
+        --start: 1;
+        --end: 1.2;
+        margin: 0 95px 0 auto;
+        animation: scale-in-and-out 2s forwards;   
     }
     main {
         padding: 0;
@@ -453,12 +426,12 @@ border: 1px solid $bg_light;
        width: 450px;
        text-align: left;
        margin: 0;
-       animation: animate-text-lg 3s forwards;
+       animation: fade-in 3s forwards;
        
    }
    .text-wrapper h2 {
     text-align: left;
-    animation: animate-text-lg 3s forwards;
+    animation: fade-in 3s forwards;
    }
    
    
