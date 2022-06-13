@@ -18,6 +18,7 @@
 }
 body {
     background-color: $light;
+    background-color: #FAFAFA;
     min-height: 100vh;
     overflow-x: hidden;    
 }
@@ -59,6 +60,7 @@ body {
     animation: slide-in-from-bottom 1s forwards;
 
     background-color: darken($light, 2%);
+    background-color: #F7F5FA;
     z-index: -1;
 }
 
