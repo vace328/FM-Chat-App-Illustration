@@ -17,17 +17,51 @@
 }
 
 body {
-    box-sizing: border-box;
     background-color: $light;
     min-height: 100vh;
-    overflow-x: hidden;
-    // display: flex;
-    // flex-direction: column;
-    // justify-content: flex-start;
-    // align-items: center;
-    
+    overflow-x: hidden;    
 }
+.app-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+.app-wrapper:before {
+    --start: -1020px;
+    --end: 0px;
+    position: absolute;
+    content: '';
+    width: 526px;
+    height: 510px;
+    // top: 0px;
+    left: -338px;
+    border-bottom-left-radius: 255px;
+    border-bottom-right-radius: 255px;
 
+    animation: slide-in-from-top 1s forwards;
+
+    background: rgb(136,56,240);
+    background: linear-gradient(0deg, rgba(136,56,240,1) 0%, rgba(233,66,255,1) 100%);   
+    z-index: -1;
+}
+.app-wrapper:after {
+    --start: -1020px;
+    --end: 0px;
+    position: absolute;
+    content: '';
+    
+    width: 526px;
+    height: 510px;
+    // bottom: 0px;
+    right: -338px;
+    border-top-left-radius: 255px;
+    border-top-right-radius: 255px;
+
+    animation: slide-in-from-bottom 1s forwards;
+
+    // background-color: darken($light, 2%);
+    background-color: yellow;    
+    z-index: -1;
+}
 
 main {
     width: 100%;
@@ -39,40 +73,10 @@ main {
 .phone-wrapper {
     width: 100%;
     margin-bottom: 55px;
-    position: relative;
-    &:before {
-        --start: -1100px;
-        --end: -505px;
-        position: absolute;
-        content: '';
-        width: 512px;
-        height: 951px;  
-        background: rgb(136,56,240);
-        background: linear-gradient(0deg, rgba(136,56,240,1) 0%, rgba(233,66,255,1) 100%);
-        border-radius: 256px;
-        // top: -505px;
-        animation: slide-in 1s forwards;
-        left: -360px;
-        z-index: -1;
-    }
+    
 }
 .text-wrapper {
-    padding-bottom: 60px;
-    position: relative;
-    &:before {
-        --start: 300px;
-        --end: -200px;
-        position: absolute;
-        content: '';
-        width: 512px;
-        height: 951px;
-        background-color: darken($light, 2%);
-        border-radius: 256px;
-        // top: -200px;
-        animation: slide-in 1s forwards;
-        right: -366px;
-        z-index: -1;
-    }
+    padding-bottom: 60px;   
     
     h2 {
         padding: 10px 0;
@@ -183,7 +187,6 @@ i {
 }
 
 // CHAT
-
 .chat-left,
 .chat-right {
     width: 100%;
@@ -196,7 +199,6 @@ i {
 
 .chat-bubble {
     border-radius: 10px;
-    // background-color: aqua;   
     padding: 8px;
     margin: 0px 7px 8px 7px;
     width: 128px;
@@ -206,7 +208,6 @@ i {
 .chat-left .chat-bubble {
     border-bottom-left-radius: 3px;    
     color: $text_moderate;
-    // background-color: lighten($violet, 35%);
     background-color: #EDE5F4;
 }
 
@@ -344,12 +345,22 @@ border-radius: 50%;
 border: 1px solid $bg_light;
 }
 
-@keyframes slide-in {
+@keyframes slide-in-from-top {
+    
     from {
         top: var(--start);
     }
     to {
         top: var(--end);
+    }
+}
+@keyframes slide-in-from-bottom {
+    
+    from {
+        bottom: var(--start);
+    }
+    to {
+        bottom: var(--end);
     }
 }
 @keyframes scale-in-and-out {
@@ -377,38 +388,40 @@ border: 1px solid $bg_light;
 @media screen and (min-width: 800px) {    
    .text-wrapper p {
        width: 500px;
-       margin: 0 auto;
-       
+       margin: 0 auto;       
    }
 }
 @media screen and (min-width: 1100px) {  
+    .app-wrapper:before {
+        --start: -1000px;
+        --end: 0px;  
+        animation: slide-in-from-top 1s forwards;  
+        width: 510px;
+        height: 700px;     
+        // top: 0px;
+        left: -90px; 
+    }
+    .app-wrapper:after {
+        --start: -1000px;
+        --end: 0px;
+        width: 510px;
+        height: 678px;     
+        // bottom: 0px;
+        right: -90px;
+        
+        animation: slide-in-from-bottom 1s forwards;
+    }
     .phone-wrapper,
     .text-wrapper {
         flex: 1 1 0px;
     }  
     .phone-wrapper {
         width: auto;
-        margin:unset;
-        &:before {   
-            --start: -1200px;
-            --end: -400px;  
-            animation: slide-in 1s forwards;       
-            // top: -400px;
-            left: -92px;            
-        }
+        margin:unset;        
     }
     .text-wrapper {        
         padding-top: 60px;
         padding-left: 30px;
-         
-        &:before {
-            --start: 600px;
-            --end: -125px;
-            // background-color: yellow;
-            // top: 600px;
-            animation: slide-in 1s forwards;            
-            right: -190px;
-        }
     }
     .phone {
         --start: 1;
@@ -432,10 +445,5 @@ border: 1px solid $bg_light;
    .text-wrapper h2 {
     text-align: left;
     animation: fade-in 3s forwards;
-   }
-   
-   
-}
-@media screen and (min-width: 376px) {    
-   
+   }  
 }
