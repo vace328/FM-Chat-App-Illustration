@@ -4,18 +4,18 @@
 @import "base/variables";
 @import "base/typography"; 
 
-/*----------  helpers
+/*----------  components
 ------------------------------------------------------------------------------*/
-@import "helpers/mixins";
+@import "components/buttons";
+@import "components/phone";
 /*----------  layout
 ------------------------------------------------------------------------------*/
 @import "layout/header";    
-@import "layout/footer";    
+   
 
 * {
     box-sizing: border-box;
 }
-
 body {
     background-color: $light;
     min-height: 100vh;
@@ -58,15 +58,13 @@ body {
 
     animation: slide-in-from-bottom 1s forwards;
 
-    // background-color: darken($light, 2%);
-    background-color: yellow;    
+    background-color: darken($light, 2%);
     z-index: -1;
 }
 
 main {
     width: 100%;
     overflow: hidden;
-    // max-width: 540px;
     padding: 64px 36px 0 36px;
     min-height: 100vh;
 }
@@ -76,8 +74,7 @@ main {
     
 }
 .text-wrapper {
-    padding-bottom: 60px;   
-    
+    padding-bottom: 60px;       
     h2 {
         padding: 10px 0;
         text-align: center;
@@ -85,8 +82,7 @@ main {
         margin-bottom: 18px;
         color: $text_very_dark;
         animation: fade-in 2s forwards;
-    }
-    
+    }    
     p {
         line-height: 1.8;
         text-align: center;
@@ -95,258 +91,25 @@ main {
     }
 }
 
-
-.phone {
-    --start: 1;
-    --end: 1.1;
-    margin: 0 auto;
-    width: 247px;
-    background-color: white;
-    border-radius: 28px;
-    padding: 10px;
-    position: relative;
-    animation: scale-in-and-out 2s forwards;
-    -webkit-box-shadow: 9px 15px 55px -6px rgba(186,186,186,1);
-    -moz-box-shadow: 9px 15px 55px -6px rgba(186,186,186,1);
-    box-shadow: 9px 15px 55px -6px rgba(186,186,186,1);
-
-    &:after {
-        content: '';
-        position: absolute;
-        background-color: white;
-        width: 130px;
-        height: 29px;
-        border-radius: 16px;
-        top: 0px;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 10;
-    }
-}
-.phone__inner-frame {
-    border-radius: 20px;
-    background-color: $light;
-    overflow: hidden;
-    padding-bottom: 11px;
-}
-a {
-    display: block;
-}
-.chat-header {
-    border-radius: 5px;
-    background: rgb(136,56,240);
-    background: linear-gradient(56deg, rgba(136,56,240,1) 0%, rgba(233,66,255,1) 100%);
-    // box-shadow: ;
-    position: relative;    
-    padding: 10px;
-    padding-top: 30px;
-    padding-bottom: 11px;
-
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    .btn-settings {
-        margin-left: auto;
-    }
-    
-}
-i {
-    font-size: 16px;
-    font-weight: 700;
-    color: $text-pale;
-}
-.contact {
-    padding-left: 8px;
-    
-}
-.contact-name {
-    font-size: 12px;
-    line-height: 14px;
-    letter-spacing: -0.5px;
-    font-weight: 500;
-    color:$white;
-}
-.contact-status {
-    font-size: 8px;
-    line-height: 12px;
-    color: $text-pale;
-}
-.img-wrapper {
-    width: 24px;
-    height: 24px;
-    overflow: hidden;
-    margin-left: 1px;
-    padding: 1px;
-    background-color: white;
-    border-radius: 50%;
-    img {
-        width: 100%;
-        border-radius: 50%;
-    }
-}
-
-// CHAT
-.chat-left,
-.chat-right {
-    width: 100%;
-    margin-bottom: 16px;
-}
-
-.chat-left:first-of-type {
-    margin-top: 11px;
-}
-
-.chat-bubble {
-    border-radius: 10px;
-    padding: 8px;
-    margin: 0px 7px 8px 7px;
-    width: 128px;
-    font-size: 8px;
-    line-height: 9px;
-}
-.chat-left .chat-bubble {
-    border-bottom-left-radius: 3px;    
-    color: $text_moderate;
-    background-color: #EDE5F4;
-}
-
-
-.test {
-    padding-top: 6px;
-    line-height: 9.9px;
-}
-
-.chat-right .chat-bubble {   
-    margin-left: auto;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 3px;
-    text-align: right;
-    background-color: $white;
-    color: $text-dark;
-   
-    &:first-of-type {
-        text-align: justify;
-    }
-    &:last-of-type {
-        width: 82px;
-    }
-}
-
-.chat-files {
-    padding: 0px 8px 5px 0;
-    text-align: right;
-}
-.chat-files img {
-    width: 40px;
-    display: inline-block;
-    border-radius: 9px;
-    &:nth-of-type(2) {
-        margin: 0 3px;
-    }
-}
-
-.chat-bubble__price {
-    position: relative;
-    width: 160px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding-right: 18px;
-    height: 32px;
-    background: rgb(233,66,255);
-    background: linear-gradient(90deg, rgba(233,66,255,1) 0%, rgba(136,56,240,1) 100%);
-    // padding-top: 3px;
-    // padding-bottom: 3px;
-}
-label {
-    font-size: 8px;
-    line-height: 10px;
-    padding-left: 20px;
-    color: $white;
-}
-.chat-bubble__price span {
-    margin-left: auto;
-    font-size: 12px;
-    font-weight: 000;
-    // letter-spacing: -0.1px;
-    color: $white;
-}
-.message-input-field {
-    margin: 8px;
-    margin-bottom: unset;
-    position: relative;
-    // width: 100%;
-}
-input[type="text"] {
-    border-radius: 30px;
-    padding: 10px; 
-    padding-left: 20px;   
-    padding-top: 8px;   
-    background-color: $white;
-    // padding-right: 30px;
-    border: unset;
-    width: 100%;
-}
-.btn-send {
-    position: absolute;
-    right: 4px;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: $bg_dark;
-    width: 24px;
-    height: 24px;
-    border: unset;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    .bi-chevron-right{
-        font-size: 12px;
-    }
-}
 ::placeholder {
     color: $text_grayish;   
     font-size: 8px;
     letter-spacing: 0.4px;
-  }
-  
-  :-ms-input-placeholder { 
+}  
+:-ms-input-placeholder { 
     color: $text_grayish;
     font-size: 8px;
     letter-spacing: 0.4px;
-  }
-  
-  ::-ms-input-placeholder { 
+}  
+::-ms-input-placeholder { 
     color: $text_grayish;
     font-size: 8px;
     letter-spacing: 0.4px;
-  }
-
-/* Hide the browser's default radio button */
-input[type="radio"] {
-position: absolute;
-opacity: 0;
-cursor: pointer;
-// height: 0;
-// width: 0;
 }
 
-  
-/* Create a custom radio button */
-.custom-radio {
-position: absolute;
-top: 50%;
-left: 8px;
-height: 13px;
-width: 13px;
-transform: translateY(-50%);
-border-radius: 50%;
-border: 1px solid $bg_light;
-}
+/* ----------- ANIMATIONS ----------- */
 
-@keyframes slide-in-from-top {
-    
+@keyframes slide-in-from-top {    
     from {
         top: var(--start);
     }
@@ -354,8 +117,7 @@ border: 1px solid $bg_light;
         top: var(--end);
     }
 }
-@keyframes slide-in-from-bottom {
-    
+@keyframes slide-in-from-bottom {    
     from {
         bottom: var(--start);
     }
@@ -374,7 +136,6 @@ border: 1px solid $bg_light;
         transform: scale(var(--start),var(--start));
     }
 }
-
 @keyframes fade-in {
     from {
         opacity: 0;
@@ -384,6 +145,7 @@ border: 1px solid $bg_light;
     }
 } 
 
+/* ----------- MEDIA QUERIES ----------- */
 
 @media screen and (min-width: 800px) {    
    .text-wrapper p {

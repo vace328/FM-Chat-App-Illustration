@@ -1,0 +1,19 @@
+/* CUSTOM RADIO BTN */
+// Hide the browser's default radio button
+input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;    
+} 
+      
+// Create a custom radio btn 
+.custom-radio {
+    position: absolute;
+    top: 50%;
+    left: 8px;
+    height: 13px;
+    width: 13px;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    border: 1px solid $bg_light;
+}
